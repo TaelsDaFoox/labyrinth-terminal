@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://buw0ikv4sqym6"]
+
+[ext_resource type="Texture2D" uid="uid://d17wxn38pxav5" path="res://quetros/labmap.png" id="1_kutkd"]
+[ext_resource type="Shader" uid="uid://mg51gp3r73sa" path="res://crt.gdshader" id="2_tahfo"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_kutkd"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c4ql1"]
+resource_local_to_scene = true
+shader = ExtResource("2_tahfo")
+shader_parameter/tex = SubResource("ViewportTexture_kutkd")
+shader_parameter/mask_type = 2
+shader_parameter/curve = 0.0
+shader_parameter/sharpness = 0.6666667
+shader_parameter/color_offset = 0.0
+shader_parameter/mask_brightness = 1.0
+shader_parameter/scanline_brightness = 1.0
+shader_parameter/min_scanline_thickness = 0.5
+shader_parameter/aspect = 0.75
+shader_parameter/wobble_strength = 0.0
+
+[node name="Node2D" type="Node2D"]
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(256, 256)
+
+[node name="Map" type="Sprite2D" parent="SubViewport"]
+position = Vector2(128, 128)
+texture = ExtResource("1_kutkd")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_c4ql1")
+offset_right = 256.0
+offset_bottom = 256.0
