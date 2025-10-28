@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://d1ovs8080pkg4"]
+[gd_scene load_steps=11 format=3 uid="uid://d1ovs8080pkg4"]
 
 [ext_resource type="Texture2D" uid="uid://d17wxn38pxav5" path="res://quetros/labmap.png" id="1_fj7yv"]
+[ext_resource type="Texture2D" uid="uid://b556jiwkgvos8" path="res://quetros/LT player.png" id="2_aqk2v"]
 [ext_resource type="Shader" uid="uid://mg51gp3r73sa" path="res://crt.gdshader" id="2_tlwt5"]
+[ext_resource type="PackedScene" uid="uid://dx570n0ki3mch" path="res://objects/NESenemy.tscn" id="4_aqk2v"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_gv5m4"]
 
@@ -10,9 +12,8 @@ viewport_path = NodePath("SubViewport")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tlwt5"]
 resource_local_to_scene = true
+shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_fj7yv")
-emission_enabled = true
-emission_texture = SubResource("ViewportTexture_fj7yv")
 uv1_scale = Vector3(-1, 1, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_aqk2v"]
@@ -24,13 +25,13 @@ shader = ExtResource("2_tlwt5")
 shader_parameter/tex = SubResource("ViewportTexture_aqk2v")
 shader_parameter/mask_type = 2
 shader_parameter/curve = 0.0
-shader_parameter/sharpness = 0.6666667
-shader_parameter/color_offset = 0.0
+shader_parameter/sharpness = 1.0
+shader_parameter/color_offset = -0.5
 shader_parameter/mask_brightness = 1.0
 shader_parameter/scanline_brightness = 1.0
 shader_parameter/min_scanline_thickness = 0.5
 shader_parameter/aspect = 0.75
-shader_parameter/wobble_strength = 1.0
+shader_parameter/wobble_strength = 0.0
 
 [sub_resource type="Environment" id="Environment_fj7yv"]
 background_mode = 2
@@ -45,10 +46,19 @@ navigation_mesh = SubResource("NavigationMesh_gv5m4")
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
 size = Vector3(6.5603027, 0.111328125, 5.7822266)
 
+[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6439177, 0.73251826, -1.0029137)
+
 [node name="Screen" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6461792, 0.72603595, -0.5)
 size = Vector3(1, 1, 0.001)
 material = SubResource("StandardMaterial3D_tlwt5")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Screen"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.034008503, 0.082624614)
+light_size = 0.752
+shadow_enabled = true
+omni_range = 1.64465
 
 [node name="SubViewport" type="SubViewport" parent="."]
 size = Vector2i(256, 256)
@@ -58,14 +68,28 @@ texture_filter = 1
 position = Vector2(128, 128)
 texture = ExtResource("1_fj7yv")
 
+[node name="NesPlayer" type="Sprite2D" parent="SubViewport"]
+texture_filter = 1
+position = Vector2(128, 128)
+texture = ExtResource("2_aqk2v")
+hframes = 2
+vframes = 2
+
 [node name="ColorRect" type="ColorRect" parent="SubViewport"]
 material = SubResource("ShaderMaterial_036b0")
 offset_right = 256.0
 offset_bottom = 256.0
+
+[node name="NesEnemy" parent="SubViewport" instance=ExtResource("4_aqk2v")]
+position = Vector2(135.19, 178.247)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fj7yv")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.90303564, 0.1940094, -0.38325843, 0.42956567, -0.40784776, 0.80568826, 0, -0.8921999, -0.4516408, 0, 1.3600259, 0)
-light_energy = 0.56
+visible = false
+light_energy = 0.395
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4479251, 0.7126573, 0.22394764)
