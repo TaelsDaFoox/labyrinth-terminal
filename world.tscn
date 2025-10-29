@@ -1,9 +1,11 @@
-[gd_scene load_steps=11 format=3 uid="uid://d1ovs8080pkg4"]
+[gd_scene load_steps=17 format=3 uid="uid://d1ovs8080pkg4"]
 
+[ext_resource type="PackedScene" uid="uid://bg6g3loqn8mec" path="res://objects/nes_map.tscn" id="1_dwbse"]
 [ext_resource type="Texture2D" uid="uid://d17wxn38pxav5" path="res://quetros/labmap.png" id="1_fj7yv"]
-[ext_resource type="Texture2D" uid="uid://b556jiwkgvos8" path="res://quetros/LT player.png" id="2_aqk2v"]
 [ext_resource type="Shader" uid="uid://mg51gp3r73sa" path="res://crt.gdshader" id="2_tlwt5"]
+[ext_resource type="PackedScene" uid="uid://fvxckug1ni5" path="res://objects/nes_player.tscn" id="4_036b0"]
 [ext_resource type="PackedScene" uid="uid://dx570n0ki3mch" path="res://objects/NESenemy.tscn" id="4_aqk2v"]
+[ext_resource type="PackedScene" uid="uid://dqams5il2w21v" path="res://objects/player.tscn" id="5_036b0"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_gv5m4"]
 
@@ -33,8 +35,30 @@ shader_parameter/min_scanline_thickness = 0.5
 shader_parameter/aspect = 0.75
 shader_parameter/wobble_strength = 0.0
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dwbse"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0, 0, 0, 1)
+
+[sub_resource type="Sky" id="Sky_pkg7o"]
+sky_material = SubResource("ProceduralSkyMaterial_dwbse")
+
 [sub_resource type="Environment" id="Environment_fj7yv"]
 background_mode = 2
+sky = SubResource("Sky_pkg7o")
+ambient_light_source = 1
+fog_enabled = true
+fog_light_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dwbse"]
+albedo_texture = ExtResource("1_fj7yv")
+emission_texture = ExtResource("1_fj7yv")
+uv1_scale = Vector3(-1, 1, 1)
+texture_filter = 2
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_036b0"]
+viewport_path = NodePath("SubViewport")
 
 [node name="World" type="Node3D"]
 
@@ -42,15 +66,20 @@ background_mode = 2
 navigation_mesh = SubResource("NavigationMesh_gv5m4")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D"]
+use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
 size = Vector3(6.5603027, 0.111328125, 5.7822266)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6439177, 0.73251826, -1.0029137)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17460108, 1.7373767, -3.4648068)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.522079, 2.0717773, -7.496056)
+size = Vector3(44.999237, 4.254883, 5.008545)
 
 [node name="Screen" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6461792, 0.72603595, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1768626, 1.7308946, -2.9647145)
 size = Vector3(1, 1, 0.001)
 material = SubResource("StandardMaterial3D_tlwt5")
 
@@ -63,33 +92,43 @@ omni_range = 1.64465
 [node name="SubViewport" type="SubViewport" parent="."]
 size = Vector2i(256, 256)
 
-[node name="Map" type="Sprite2D" parent="SubViewport"]
-texture_filter = 1
-position = Vector2(128, 128)
-texture = ExtResource("1_fj7yv")
+[node name="NesMap" parent="SubViewport" instance=ExtResource("1_dwbse")]
 
-[node name="NesPlayer" type="Sprite2D" parent="SubViewport"]
-texture_filter = 1
-position = Vector2(128, 128)
-texture = ExtResource("2_aqk2v")
-hframes = 2
-vframes = 2
+[node name="NesEnemy" parent="SubViewport" instance=ExtResource("4_aqk2v")]
+position = Vector2(135.19, 178.247)
+
+[node name="NesPlayer" parent="SubViewport" instance=ExtResource("4_036b0")]
 
 [node name="ColorRect" type="ColorRect" parent="SubViewport"]
 material = SubResource("ShaderMaterial_036b0")
 offset_right = 256.0
 offset_bottom = 256.0
-
-[node name="NesEnemy" parent="SubViewport" instance=ExtResource("4_aqk2v")]
-position = Vector2(135.19, 178.247)
+color = Color(1, 1, 1, 0.43137255)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_fj7yv")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
-transform = Transform3D(0.90303564, 0.1940094, -0.38325843, 0.42956567, -0.40784776, 0.80568826, 0, -0.8921999, -0.4516408, 0, 1.3600259, 0)
+transform = Transform3D(0.90303564, 0.1940094, -0.38325843, 0.42956567, -0.40784776, 0.80568826, 0, -0.8921999, -0.4516408, 0, 5.466771, 0)
 visible = false
 light_energy = 0.395
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.4479251, 0.7126573, 0.22394764)
+[node name="LabRef" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.057118624, 0)
+size = Vector3(80, 0.001, 80)
+material = SubResource("StandardMaterial3D_dwbse")
+
+[node name="Player" parent="." instance=ExtResource("5_036b0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9585496, 1.0647373, 0.26333034)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Control"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = SubResource("ViewportTexture_036b0")

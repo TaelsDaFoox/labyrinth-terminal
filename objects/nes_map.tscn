@@ -1,0 +1,50 @@
+[gd_scene load_steps=6 format=3 uid="uid://bg6g3loqn8mec"]
+
+[ext_resource type="Texture2D" uid="uid://d17wxn38pxav5" path="res://quetros/labmap.png" id="1_6eppg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6eppg"]
+size = Vector2(16, 80)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4e0rs"]
+size = Vector2(32, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_woxiw"]
+size = Vector2(130, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_463vv"]
+size = Vector2(32, 32)
+
+[node name="NesMap" type="StaticBody2D"]
+
+[node name="Graphic" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(128, 128)
+texture = ExtResource("1_6eppg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(104, 136)
+shape = SubResource("RectangleShape2D_6eppg")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="."]
+position = Vector2(152, 136)
+shape = SubResource("RectangleShape2D_6eppg")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(112, 168)
+shape = SubResource("RectangleShape2D_4e0rs")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="."]
+position = Vector2(160, 168)
+shape = SubResource("RectangleShape2D_4e0rs")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="."]
+position = Vector2(192, 136)
+shape = SubResource("RectangleShape2D_4e0rs")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="."]
+position = Vector2(175, 104)
+shape = SubResource("RectangleShape2D_woxiw")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(96, 144)
+shape = SubResource("RectangleShape2D_463vv")
