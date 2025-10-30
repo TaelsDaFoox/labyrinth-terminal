@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d1ovs8080pkg4"]
+[gd_scene load_steps=18 format=3 uid="uid://d1ovs8080pkg4"]
 
 [ext_resource type="PackedScene" uid="uid://bg6g3loqn8mec" path="res://objects/nes_map.tscn" id="1_dwbse"]
 [ext_resource type="Texture2D" uid="uid://d17wxn38pxav5" path="res://quetros/labmap.png" id="1_fj7yv"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://fvxckug1ni5" path="res://objects/nes_player.tscn" id="4_036b0"]
 [ext_resource type="PackedScene" uid="uid://dx570n0ki3mch" path="res://objects/NESenemy.tscn" id="4_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://dqams5il2w21v" path="res://objects/player.tscn" id="5_036b0"]
+[ext_resource type="PackedScene" uid="uid://ccraft36g642a" path="res://objects/nesRobot.tscn" id="5_pkg7o"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_gv5m4"]
 
@@ -72,14 +73,34 @@ use_collision = true
 size = Vector3(6.5603027, 0.111328125, 5.7822266)
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17460108, 1.7373767, -3.4648068)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17460108, 1.7373767, -4.3850927)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.522079, 2.0717773, -7.496056)
-size = Vector3(44.999237, 4.254883, 5.008545)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.522079, 4.003034, -7.496056)
+size = Vector3(44.999237, 8, 5.008545)
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.480791, 4.003034, -5.0045705)
+size = Vector3(4.993496, 8, 9.991516)
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.472679, 4.003034, 4.9291587)
+size = Vector3(5.0753613, 8, 9.975128)
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.5748196, 4.003034, 9.984713)
+size = Vector3(5.0753613, 8, 9.975128)
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.058707, 4.003034, 12.488813)
+size = Vector3(10.107586, 8, 4.9669266)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61597824, 0.59140015, -6.7260976)
+size = Vector3(12.679985, 1.2941284, 6.548462)
 
 [node name="Screen" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1768626, 1.7308946, -2.9647145)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1768626, 1.7308946, -3.8850002)
 size = Vector3(1, 1, 0.001)
 material = SubResource("StandardMaterial3D_tlwt5")
 
@@ -99,6 +120,9 @@ position = Vector2(135.19, 178.247)
 
 [node name="NesPlayer" parent="SubViewport" instance=ExtResource("4_036b0")]
 
+[node name="NESRobot" parent="SubViewport" instance=ExtResource("5_pkg7o")]
+position = Vector2(88, 120)
+
 [node name="ColorRect" type="ColorRect" parent="SubViewport"]
 material = SubResource("ShaderMaterial_036b0")
 offset_right = 256.0
@@ -110,11 +134,10 @@ environment = SubResource("Environment_fj7yv")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.90303564, 0.1940094, -0.38325843, 0.42956567, -0.40784776, 0.80568826, 0, -0.8921999, -0.4516408, 0, 5.466771, 0)
-visible = false
 light_energy = 0.395
 
 [node name="LabRef" type="CSGBox3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.057118624, 0)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.0020439625, 0.04918, -9.4652176e-05)
 size = Vector3(80, 0.001, 80)
 material = SubResource("StandardMaterial3D_dwbse")
 

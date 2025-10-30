@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://ccraft36g642a"]
+
+[ext_resource type="Script" uid="uid://dr6mp4pmepanh" path="res://objects/nes_robot.gd" id="1_bggg8"]
+[ext_resource type="Texture2D" uid="uid://6ajod1hq1wwf" path="res://quetros/nesRobot.png" id="2_bggg8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m3rph"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bggg8"]
+size = Vector2(1.5, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r63d7"]
+size = Vector2(12, 2)
+
+[node name="NESRobot" type="CharacterBody2D"]
+collision_layer = 2
+script = ExtResource("1_bggg8")
+
+[node name="Sprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_bggg8")
+hframes = 4
+vframes = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(0.75, 0.75)
+shape = SubResource("RectangleShape2D_m3rph")
+
+[node name="CollR" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollR"]
+position = Vector2(8.25, 0)
+shape = SubResource("RectangleShape2D_bggg8")
+
+[node name="CollL" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollL"]
+position = Vector2(-8, 0)
+shape = SubResource("RectangleShape2D_bggg8")
+
+[node name="CollU" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollU"]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_r63d7")
+
+[node name="CollD" type="Area2D" parent="."]
+position = Vector2(0, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollD"]
+position = Vector2(0.5, -8)
+shape = SubResource("RectangleShape2D_r63d7")
