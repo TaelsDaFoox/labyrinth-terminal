@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://1ckn02axapqj" path="res://quetros/LP glitch.png" id="1_wnt00"]
 
 [node name="NesEnemy" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_pl3n0")
 
 [node name="NesEnemy" type="Sprite2D" parent="."]

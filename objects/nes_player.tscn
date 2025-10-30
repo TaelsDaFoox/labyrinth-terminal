@@ -6,6 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m3rph"]
 
 [node name="NESPlayer" type="CharacterBody2D"]
+collision_layer = 2
 script = ExtResource("1_m3rph")
 
 [node name="Sprite" type="Sprite2D" parent="."]

@@ -1,22 +1,28 @@
-[gd_scene load_steps=18 format=3 uid="uid://d1ovs8080pkg4"]
+[gd_scene load_steps=20 format=3 uid="uid://d1ovs8080pkg4"]
 
 [ext_resource type="PackedScene" uid="uid://bg6g3loqn8mec" path="res://objects/nes_map.tscn" id="1_dwbse"]
 [ext_resource type="Texture2D" uid="uid://d17wxn38pxav5" path="res://quetros/labmap.png" id="1_fj7yv"]
+[ext_resource type="PackedScene" uid="uid://s8w1ctbrsddx" path="res://models/monitor.glb" id="1_ioo17"]
 [ext_resource type="Shader" uid="uid://mg51gp3r73sa" path="res://crt.gdshader" id="2_tlwt5"]
 [ext_resource type="PackedScene" uid="uid://fvxckug1ni5" path="res://objects/nes_player.tscn" id="4_036b0"]
 [ext_resource type="PackedScene" uid="uid://dx570n0ki3mch" path="res://objects/NESenemy.tscn" id="4_aqk2v"]
 [ext_resource type="PackedScene" uid="uid://dqams5il2w21v" path="res://objects/player.tscn" id="5_036b0"]
 [ext_resource type="PackedScene" uid="uid://ccraft36g642a" path="res://objects/nesRobot.tscn" id="5_pkg7o"]
+[ext_resource type="PackedScene" uid="uid://dokldkq8dfta2" path="res://objects/robot.tscn" id="8_gbfbk"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_gv5m4"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_fj7yv"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_wse8f"]
 viewport_path = NodePath("SubViewport")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tlwt5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ic0uy"]
 resource_local_to_scene = true
-shading_mode = 0
-albedo_texture = SubResource("ViewportTexture_fj7yv")
+albedo_texture = SubResource("ViewportTexture_wse8f")
+metallic = 0.46
+metallic_specular = 0.24
+roughness = 0.31
+emission_enabled = true
+emission_texture = SubResource("ViewportTexture_wse8f")
 uv1_scale = Vector3(-1, 1, 1)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_aqk2v"]
@@ -72,9 +78,6 @@ use_collision = true
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
 size = Vector3(6.5603027, 0.111328125, 5.7822266)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.17460108, 1.7373767, -4.3850927)
-
 [node name="CSGBox3D3" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.522079, 4.003034, -7.496056)
 size = Vector3(44.999237, 8, 5.008545)
@@ -96,16 +99,19 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.058707, 4.003034, 12.48881
 size = Vector3(10.107586, 8, 4.9669266)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61597824, 0.59140015, -6.7260976)
-size = Vector3(12.679985, 1.2941284, 6.548462)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61597824, 0.37290955, -6.703713)
+size = Vector3(12.679985, 0.8571472, 6.593231)
 
-[node name="Screen" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1768626, 1.7308946, -3.8850002)
-size = Vector3(1, 1, 0.001)
-material = SubResource("StandardMaterial3D_tlwt5")
+[node name="monitor" parent="." instance=ExtResource("1_ioo17")]
+transform = Transform3D(-3.059797e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.059797e-08, 0.1768626, 1.1618234, -3.9213724)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Screen"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.034008503, 0.082624614)
+[node name="Cube" parent="monitor" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.017813683, 0.81660235, 0)
+surface_material_override/1 = SubResource("StandardMaterial3D_ic0uy")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="monitor"]
+transform = Transform3D(-6.244484e-08, 0, 1.4285715, 0, 1.4285715, 0, -1.4285715, 0, -6.244484e-08, 0.48999643, 0.72713697, -2.9802322e-08)
+visible = false
 light_size = 0.752
 shadow_enabled = true
 omni_range = 1.64465
@@ -155,3 +161,9 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = SubResource("ViewportTexture_036b0")
+
+[node name="Robot" parent="." node_paths=PackedStringArray("nesRobot") instance=ExtResource("8_gbfbk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0965042, 1.0536124, 6.633466)
+nesRobot = NodePath("../SubViewport/NESRobot")
+
+[editable path="monitor"]

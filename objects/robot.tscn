@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dokldkq8dfta2"]
+
+[ext_resource type="Script" uid="uid://d153gmrbgplek" path="res://robot.gd" id="1_fga7d"]
+[ext_resource type="Texture2D" uid="uid://6ajod1hq1wwf" path="res://quetros/nesRobot.png" id="2_kvr6e"]
+
+[node name="Robot" type="CharacterBody3D"]
+script = ExtResource("1_fga7d")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+visible = false
+radius = 1.0
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(12, 0, 0, 0, 12, 0, 0, 0, 12, 0, 0, 0)
+billboard = 2
+texture_filter = 0
+texture = ExtResource("2_kvr6e")
+hframes = 4
+vframes = 5
+frame = 1
