@@ -19,8 +19,7 @@ viewport_path = NodePath("SubViewport")
 resource_local_to_scene = true
 albedo_texture = SubResource("ViewportTexture_wse8f")
 metallic = 0.46
-metallic_specular = 0.24
-roughness = 0.31
+roughness = 0.49
 emission_enabled = true
 emission_texture = SubResource("ViewportTexture_wse8f")
 uv1_scale = Vector3(-1, 1, 1)
@@ -82,6 +81,30 @@ size = Vector3(6.5603027, 0.111328125, 5.7822266)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.522079, 4.003034, -7.496056)
 size = Vector3(44.999237, 8, 5.008545)
 
+[node name="CSGBox3D11" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.497746, 4.003034, 12.471779)
+size = Vector3(5.047905, 8, 44.944214)
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.009605, 4.003034, 32.47381)
+size = Vector3(30.024183, 8, 4.940155)
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.491871, 4.003034, 32.47381)
+size = Vector3(24.997063, 8, 4.940155)
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.520737, 4.003034, 29.98225)
+size = Vector3(5.0181875, 8, 9.923271)
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.500584, 4.003034, 24.991459)
+size = Vector3(4.978758, 8, 9.923271)
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.468567, 4.003034, 7.5405693)
+size = Vector3(5.189086, 8, 34.833794)
+
 [node name="CSGBox3D5" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.480791, 4.003034, -5.0045705)
 size = Vector3(4.993496, 8, 9.991516)
@@ -97,6 +120,26 @@ size = Vector3(5.0753613, 8, 9.975128)
 [node name="CSGBox3D8" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.058707, 4.003034, 12.488813)
 size = Vector3(10.107586, 8, 4.9669266)
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.986425, 4.003034, 12.488813)
+size = Vector3(10.046713, 8, 4.9669266)
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.003897, 4.003036, 2.486991)
+size = Vector3(10.046713, 8, 4.9669266)
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.505667, 4.003036, 12.493748)
+size = Vector3(5.0431724, 8, 24.98044)
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.9964657, 4.003036, 22.500114)
+size = Vector3(40.061577, 8, 4.9677052)
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.47373, 4.003034, 4.3386993)
+size = Vector3(5.021322, 8, 21.267155)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61597824, 0.37290955, -6.703713)
@@ -140,6 +183,7 @@ environment = SubResource("Environment_fj7yv")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.90303564, 0.1940094, -0.38325843, 0.42956567, -0.40784776, 0.80568826, 0, -0.8921999, -0.4516408, 0, 5.466771, 0)
+visible = false
 light_energy = 0.395
 
 [node name="LabRef" type="CSGBox3D" parent="."]
