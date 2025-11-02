@@ -11,6 +11,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	flashlight.rotation.y = lerp_angle(flashlight.rotation.y,camera.rotation.y,delta*10)
 	flashlight.rotation.x = lerp_angle(flashlight.rotation.x,camera.rotation.x,delta*10)
+	Global.playerpos=global_position
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("lock mouse"):
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED

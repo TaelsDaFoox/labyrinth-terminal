@@ -3,16 +3,14 @@
 [ext_resource type="Texture2D" uid="uid://1ckn02axapqj" path="res://quetros/LP glitch.png" id="1_7b5x3"]
 [ext_resource type="Script" uid="uid://rbbaa0b57p2f" path="res://objects/spooky_guy.gd" id="1_817ku"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_817ku"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_817ku"]
+radius = 0.46354172
 
 [node name="SpookyGuy" type="CharacterBody3D"]
 script = ExtResource("1_817ku")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_817ku")
-
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(6.495, 0, 0, 0, 6.495, 0, 0, 0, 6.495, 0, 0, 0)
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 1.18189, 0)
 billboard = 1
 texture_filter = 0
 texture = ExtResource("1_7b5x3")
@@ -20,3 +18,9 @@ hframes = 3
 vframes = 3
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+path_desired_distance = 0.5
+path_max_distance = 0.21
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18189, 0)
+shape = SubResource("SphereShape3D_817ku")

@@ -5,4 +5,4 @@ func _physics_process(delta: float) -> void:
 	if nesRobot:
 		position.x=(nesRobot.position.x-128)/3.2
 		position.z=(nesRobot.position.y-128)/3.2
-		print(position)
+		#print(position)
