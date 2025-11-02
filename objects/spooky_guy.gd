@@ -7,6 +7,6 @@ func _physics_process(delta: float) -> void:
 	var nextpos=nav.get_next_path_position()
 	velocity = global_position.direction_to(nextpos)*movespd
 	#velocity.y=0
-	print(velocity)
+	#print(velocity)
 	move_and_slide()
 	#position.y=1.7

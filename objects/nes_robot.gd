@@ -35,7 +35,7 @@ func _process(delta: float) -> void:
 	spr.frame=int(animframe+animNum*4)
 
 func pacturn(dir: float):
-	print(collR.get_overlapping_bodies())
+	#print(collR.get_overlapping_bodies())
 	if not movedir == dir:
 		if dir == PI/-2 and not collU.get_overlapping_bodies():
 			movedir = dir

@@ -3,6 +3,9 @@ extends CharacterBody3D
 @export var move_speed :=10
 @export var mouse_sensitivity:=0.005
 @onready var flashlight = $SpotLight3D
+var enemyasset = load("res://objects/spooky_guy.tscn")
+var enemynesasset = load("res://objects/NESenemy.tscn")
+@onready var enemytimer=$EnemySpawnTimer
 func _physics_process(delta: float) -> void:
 	var input_dir = Input.get_vector("left","right","forward","backward")
 	input_dir = input_dir.rotated(-camera.rotation.y)
@@ -20,3 +23,12 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		camera.rotation.y-=event.relative.x*mouse_sensitivity
 		camera.rotation.x-=event.relative.y*mouse_sensitivity
+func _on_enemy_spawn_timer_timeout() -> void:
+	var enemyspawn = enemyasset.instantiate()
+	get_parent().add_child(enemyspawn)
+	var randomangle = randf_range(0,2*PI)
+	enemyspawn.position.x = sin(randomangle)*40
+	enemyspawn.position.z = cos(randomangle)*40
+	var nesenemyspawn = enemynesasset.instantiate()
+	get_parent().get_node("SubViewport").add_child(nesenemyspawn)
+	nesenemyspawn.targetObj = enemyspawn

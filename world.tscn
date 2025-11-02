@@ -191,7 +191,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.61597824, 0.37290955, -6.70
 size = Vector3(12.679985, 0.8571472, 6.593231)
 
 [node name="SpookyGuy" parent="." instance=ExtResource("10_wse8f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.157675, 1.6701076, 12.616271)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -40.776863, 1.6701229, -40.376022)
 
 [node name="monitor" parent="." instance=ExtResource("1_ioo17")]
 transform = Transform3D(-3.059797e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, -3.059797e-08, 0.1768626, 1.1618234, -3.9213724)
@@ -232,7 +232,6 @@ environment = SubResource("Environment_fj7yv")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.90303564, 0.1940094, -0.38325843, 0.42956567, -0.40784776, 0.80568826, 0, -0.8921999, -0.4516408, 0, 5.466771, 0)
-visible = false
 light_energy = 0.395
 
 [node name="LabRef" type="CSGBox3D" parent="."]

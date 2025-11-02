@@ -21,3 +21,8 @@ shape = SubResource("CapsuleShape3D_bxedw")
 light_energy = 10.0
 spot_range = 21.075838
 spot_angle = 36.43459
+
+[node name="EnemySpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
