@@ -26,6 +26,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion and Input.mouse_mode == Input.MOUSE_MODE_CAPTURED:
 		camera.rotation.y-=event.relative.x*mouse_sensitivity
 		camera.rotation.x-=event.relative.y*mouse_sensitivity
+		camera.rotation.x= clampf(camera.rotation.x,-PI/2,PI/2)
 func _on_enemy_spawn_timer_timeout() -> void:
 	var enemyspawn = enemyasset.instantiate()
 	var randomangle = randf_range(0,2*PI)
