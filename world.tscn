@@ -33,13 +33,13 @@ uv1_scale = Vector3(-1, 1, 1)
 height = 4.835449
 radius = 2.803711
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_aqk2v"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_ic0uy"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_036b0"]
 resource_local_to_scene = true
 shader = ExtResource("2_tlwt5")
-shader_parameter/tex = SubResource("ViewportTexture_aqk2v")
+shader_parameter/tex = SubResource("ViewportTexture_ic0uy")
 shader_parameter/mask_type = 2
 shader_parameter/curve = 0.0
 shader_parameter/sharpness = 1.0
@@ -237,7 +237,7 @@ size = Vector2i(256, 256)
 [node name="NesPlayer" parent="SubViewport" instance=ExtResource("4_036b0")]
 
 [node name="NESRobot" parent="SubViewport" instance=ExtResource("5_pkg7o")]
-position = Vector2(88, 120)
+position = Vector2(104, 136)
 
 [node name="ColorRect" type="ColorRect" parent="SubViewport"]
 material = SubResource("ShaderMaterial_036b0")
@@ -275,7 +275,7 @@ offset_bottom = 40.0
 texture = SubResource("ViewportTexture_036b0")
 
 [node name="Robot" parent="." node_paths=PackedStringArray("nesRobot") instance=ExtResource("8_gbfbk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0965042, 1.0536124, 6.633466)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -7.170103, 1.0536124, 2.155776)
 nesRobot = NodePath("../SubViewport/NESRobot")
 
 [node name="UI" parent="." instance=ExtResource("10_wse8f")]

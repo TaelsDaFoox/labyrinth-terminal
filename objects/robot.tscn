@@ -19,5 +19,3 @@ collision_mask = 128
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DestroyEnemy"]
 shape = SubResource("SphereShape3D_kvr6e")
-
-[connection signal="body_entered" from="DestroyEnemy" to="." method="_on_destroy_enemy_body_entered"]

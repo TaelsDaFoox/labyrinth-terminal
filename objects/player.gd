@@ -6,6 +6,7 @@ extends CharacterBody3D
 var enemyasset = load("res://objects/spooky_guy.tscn")
 var enemynesasset = load("res://objects/NESenemy.tscn")
 @onready var enemytimer=$EnemySpawnTimer
+var spook = load("res://spooky.tscn")
 func _physics_process(delta: float) -> void:
 	var input_dir = Input.get_vector("left","right","forward","backward")
 	input_dir = input_dir.rotated(-camera.rotation.y)
@@ -39,4 +40,5 @@ func _on_enemy_spawn_timer_timeout() -> void:
 
 func _on_die_body_entered(body: Node3D) -> void:
 	Global.initializeVars()
-	get_tree().reload_current_scene()
+	get_tree().change_scene_to_packed(spook)
+	#get_tree().reload_current_scene()

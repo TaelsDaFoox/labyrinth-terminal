@@ -51,6 +51,7 @@ offset_top = -77.0
 offset_right = -9.0
 grow_horizontal = 0
 grow_vertical = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_constants/outline_size = 28
 theme_override_font_sizes/font_size = 56
 text = "100/100"

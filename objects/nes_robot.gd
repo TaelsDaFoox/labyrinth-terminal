@@ -7,7 +7,7 @@ extends CharacterBody2D
 @onready var collU: Area2D = $CollU
 @onready var collD: Area2D = $CollD
 var animframe := 0.0
-var movedir := 0.0
+var movedir := PI
 var animNum := 0
 func _ready() -> void:
 	pass

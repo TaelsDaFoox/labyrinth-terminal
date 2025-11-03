@@ -2,6 +2,7 @@ extends CharacterBody3D
 @export var nesRobot: CharacterBody2D
 @onready var model = $model
 @onready var anim = $model/AnimationPlayer
+@onready var area = $DestroyEnemy
 
 func _physics_process(delta: float) -> void:
 	if nesRobot:
@@ -13,8 +14,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			anim.play("Walk",0.1,2.0)
 		#print(position)
-
-
-func _on_destroy_enemy_body_entered(body: Node3D) -> void:
-	body.nesenemy.queue_free()
-	body.queue_free()
+	for i in area.get_overlapping_bodies():
+		if not nesRobot.againstWall():
+			i.nesenemy.queue_free()
+			i.queue_free()
