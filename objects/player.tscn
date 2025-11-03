@@ -27,7 +27,7 @@ spot_range = 21.075838
 spot_angle = 36.43459
 
 [node name="EnemySpawnTimer" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 8.0
 autostart = true
 
 [node name="die" type="Area3D" parent="."]
