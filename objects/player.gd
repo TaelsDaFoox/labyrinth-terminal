@@ -38,4 +38,5 @@ func _on_enemy_spawn_timer_timeout() -> void:
 
 
 func _on_die_body_entered(body: Node3D) -> void:
+	Global.initializeVars()
 	get_tree().reload_current_scene()

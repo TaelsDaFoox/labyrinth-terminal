@@ -17,4 +17,10 @@ func _process(delta: float) -> void:
 			else:
 				controlprompt.text = controlprompt.text+"\n[!]OUT OF POWER, CAN'T TURN ON[!]"
 	else:
-		controlprompt.text = ""
+		if Global.inBatteryRange:
+			if Global.holdingBattery:
+				controlprompt.text = "You're holding a battery."
+			else:
+				controlprompt.text = "Press E to take a battery."
+		else:
+			controlprompt.text = ""

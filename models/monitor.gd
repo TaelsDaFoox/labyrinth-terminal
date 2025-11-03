@@ -2,6 +2,10 @@ extends Node3D
 @onready var model = $Cube
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	Global.inControlRange=true
+	if Global.holdingBattery:
+		Global.holdingBattery=false
+		Global.power=100.0
+		Global.monitorOn=true
 func _on_area_3d_body_exited(body: Node3D) -> void:
 	Global.inControlRange=false
 	

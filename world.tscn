@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://d1ovs8080pkg4"]
+[gd_scene load_steps=24 format=3 uid="uid://d1ovs8080pkg4"]
 
 [ext_resource type="PackedScene" uid="uid://bg6g3loqn8mec" path="res://objects/nes_map.tscn" id="1_dwbse"]
 [ext_resource type="Texture2D" uid="uid://d17wxn38pxav5" path="res://quetros/labmap.png" id="1_fj7yv"]
+[ext_resource type="Script" uid="uid://bbqax2lv2tvav" path="res://power_cube.gd" id="1_ic0uy"]
 [ext_resource type="PackedScene" uid="uid://s8w1ctbrsddx" path="res://models/monitor.glb" id="1_ioo17"]
 [ext_resource type="Script" uid="uid://qm6qypyjywcv" path="res://models/monitor.gd" id="2_ioo17"]
 [ext_resource type="Shader" uid="uid://mg51gp3r73sa" path="res://crt.gdshader" id="2_tlwt5"]
@@ -74,6 +75,9 @@ texture_filter = 2
 [sub_resource type="ViewportTexture" id="ViewportTexture_036b0"]
 viewport_path = NodePath("SubViewport")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_wse8f"]
+size = Vector3(12.89624, 7.7128906, 13.604492)
+
 [node name="World" type="Node3D"]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
@@ -102,7 +106,7 @@ size = Vector3(19.6828, 8, 5.008545)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.760318, 4.0219264, -22.042324)
 size = Vector3(4.9536667, 8, 14.137146)
 
-[node name="CSGBox3D29" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+[node name="PowerCube" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.986683, 4.0219264, -24.962961)
 size = Vector3(10.018812, 8, 9.976776)
 
@@ -277,7 +281,19 @@ nesRobot = NodePath("../SubViewport/NESRobot")
 [node name="UI" parent="." instance=ExtResource("10_wse8f")]
 mouse_filter = 2
 
+[node name="PowerCubeArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.988394, 3.590088, -25.107086)
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("1_ic0uy")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PowerCubeArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12915039, 0)
+shape = SubResource("BoxShape3D_wse8f")
+
 [connection signal="body_entered" from="monitor/Area3D" to="monitor" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="monitor/Area3D" to="monitor" method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="PowerCubeArea" to="PowerCubeArea" method="_on_body_entered"]
+[connection signal="body_exited" from="PowerCubeArea" to="PowerCubeArea" method="_on_body_exited"]
 
 [editable path="monitor"]
