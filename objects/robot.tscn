@@ -15,7 +15,7 @@ transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
 
 [node name="DestroyEnemy" type="Area3D" parent="."]
 collision_layer = 0
-collision_mask = 8
+collision_mask = 128
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DestroyEnemy"]
 shape = SubResource("SphereShape3D_kvr6e")

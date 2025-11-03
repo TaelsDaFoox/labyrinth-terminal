@@ -14,14 +14,15 @@ func _ready() -> void:
 	#playerReal = get_parent().get_parent().get_node("Player")
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_pressed("ui_left"):
-		pacturn(PI)
-	if Input.is_action_pressed("ui_right"):
-		pacturn(0)
-	if Input.is_action_pressed("ui_up"):
-		pacturn(PI/-2)
-	if Input.is_action_pressed("ui_down"):
-		pacturn(PI/2)
+	if Global.controllingGame:
+		if Input.is_action_pressed("left"):
+			pacturn(PI)
+		if Input.is_action_pressed("right"):
+			pacturn(0)
+		if Input.is_action_pressed("forward"):
+			pacturn(PI/-2)
+		if Input.is_action_pressed("backward"):
+			pacturn(PI/2)
 	#var input_dir = Input.get_vector("ui_left","ui_right","ui_up","ui_down")
 	velocity = (Vector2.RIGHT*movespd).rotated(movedir)
 	move_and_slide()

@@ -7,7 +7,7 @@
 radius = 0.46354172
 
 [node name="SpookyGuy" type="CharacterBody3D"]
-collision_layer = 8
+collision_layer = 128
 script = ExtResource("1_817ku")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]

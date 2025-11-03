@@ -9,6 +9,8 @@ var enemynesasset = load("res://objects/NESenemy.tscn")
 func _physics_process(delta: float) -> void:
 	var input_dir = Input.get_vector("left","right","forward","backward")
 	input_dir = input_dir.rotated(-camera.rotation.y)
+	if Global.controllingGame:
+		input_dir=Vector2.ZERO
 	velocity.x=input_dir.x*move_speed
 	velocity.z=input_dir.y*move_speed
 	move_and_slide()
@@ -33,3 +35,7 @@ func _on_enemy_spawn_timer_timeout() -> void:
 	get_parent().get_node("SubViewport").add_child(nesenemyspawn)
 	enemyspawn.nesenemy=nesenemyspawn
 	nesenemyspawn.targetObj = enemyspawn
+
+
+func _on_die_body_entered(body: Node3D) -> void:
+	get_tree().reload_current_scene()

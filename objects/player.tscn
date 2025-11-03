@@ -1,10 +1,14 @@
-[gd_scene load_steps=3 format=3 uid="uid://dqams5il2w21v"]
+[gd_scene load_steps=4 format=3 uid="uid://dqams5il2w21v"]
 
 [ext_resource type="Script" uid="uid://obcoq41irhq3" path="res://objects/player.gd" id="1_eqqp1"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_bxedw"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_eqqp1"]
+radius = 1.1000867
+
 [node name="Player" type="CharacterBody3D"]
+collision_layer = 16
 script = ExtResource("1_eqqp1")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
@@ -26,4 +30,12 @@ spot_angle = 36.43459
 wait_time = 2.0
 autostart = true
 
+[node name="die" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 128
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="die"]
+shape = SubResource("SphereShape3D_eqqp1")
+
 [connection signal="timeout" from="EnemySpawnTimer" to="." method="_on_enemy_spawn_timer_timeout"]
+[connection signal="body_entered" from="die" to="." method="_on_die_body_entered"]
