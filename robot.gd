@@ -13,3 +13,8 @@ func _physics_process(delta: float) -> void:
 		else:
 			anim.play("Walk",0.1,2.0)
 		#print(position)
+
+
+func _on_destroy_enemy_body_entered(body: Node3D) -> void:
+	body.nesenemy.queue_free()
+	body.queue_free()

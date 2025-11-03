@@ -1,6 +1,7 @@
 extends CharacterBody3D
 @onready var nav := $NavigationAgent3D
 @export var movespd :=5
+var nesenemy: CharacterBody2D
 #func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	nav.set_target_position(Vector3(Global.playerpos.x,global_position.y,Global.playerpos.z))

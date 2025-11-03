@@ -1,10 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://dokldkq8dfta2"]
+[gd_scene load_steps=4 format=3 uid="uid://dokldkq8dfta2"]
 
 [ext_resource type="Script" uid="uid://d153gmrbgplek" path="res://robot.gd" id="1_fga7d"]
 [ext_resource type="PackedScene" uid="uid://u0ctsg1uitgc" path="res://models/carl pacmin.glb" id="2_kvr6e"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_kvr6e"]
+radius = 1.9261332
+
 [node name="Robot" type="CharacterBody3D"]
+collision_mask = 5
 script = ExtResource("1_fga7d")
 
 [node name="model" parent="." instance=ExtResource("2_kvr6e")]
 transform = Transform3D(0.7, 0, 0, 0, 0.7, 0, 0, 0, 0.7, 0, 0, 0)
+
+[node name="DestroyEnemy" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DestroyEnemy"]
+shape = SubResource("SphereShape3D_kvr6e")
+
+[connection signal="body_entered" from="DestroyEnemy" to="." method="_on_destroy_enemy_body_entered"]
