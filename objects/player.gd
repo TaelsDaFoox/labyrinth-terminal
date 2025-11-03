@@ -27,10 +27,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		camera.rotation.x-=event.relative.y*mouse_sensitivity
 func _on_enemy_spawn_timer_timeout() -> void:
 	var enemyspawn = enemyasset.instantiate()
-	get_parent().add_child(enemyspawn)
 	var randomangle = randf_range(0,2*PI)
 	enemyspawn.position.x = sin(randomangle)*50
 	enemyspawn.position.z = cos(randomangle)*50
+	get_parent().add_child(enemyspawn)
 	var nesenemyspawn = enemynesasset.instantiate()
 	get_parent().get_node("SubViewport").add_child(nesenemyspawn)
 	enemyspawn.nesenemy=nesenemyspawn

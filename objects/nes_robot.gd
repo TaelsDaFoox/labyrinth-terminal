@@ -14,7 +14,7 @@ func _ready() -> void:
 	#playerReal = get_parent().get_parent().get_node("Player")
 
 func _physics_process(delta: float) -> void:
-	if Global.controllingGame:
+	if Global.controllingGame and Global.monitorOn:
 		if Input.is_action_pressed("left"):
 			pacturn(PI)
 		if Input.is_action_pressed("right"):

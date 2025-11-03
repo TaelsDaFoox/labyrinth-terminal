@@ -257,13 +257,14 @@ material = SubResource("StandardMaterial3D_dwbse")
 [node name="Player" parent="." instance=ExtResource("5_036b0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9585496, 1.0647373, 0.26333034)
 
-[node name="Control" type="Control" parent="."]
+[node name="DebugUI" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="Control"]
+[node name="TextureRect" type="TextureRect" parent="DebugUI"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
