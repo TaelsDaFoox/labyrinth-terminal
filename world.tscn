@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://d1ovs8080pkg4"]
+[gd_scene load_steps=25 format=3 uid="uid://d1ovs8080pkg4"]
 
 [ext_resource type="PackedScene" uid="uid://bg6g3loqn8mec" path="res://objects/nes_map.tscn" id="1_dwbse"]
 [ext_resource type="Texture2D" uid="uid://d17wxn38pxav5" path="res://quetros/labmap.png" id="1_fj7yv"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://s8w1ctbrsddx" path="res://models/monitor.glb" id="1_ioo17"]
 [ext_resource type="Script" uid="uid://qm6qypyjywcv" path="res://models/monitor.gd" id="2_ioo17"]
 [ext_resource type="Shader" uid="uid://mg51gp3r73sa" path="res://crt.gdshader" id="2_tlwt5"]
+[ext_resource type="AudioStream" uid="uid://btynhb6edwwd6" path="res://sounds/blipSelect.wav" id="3_k3n1d"]
 [ext_resource type="PackedScene" uid="uid://fvxckug1ni5" path="res://objects/nes_player.tscn" id="4_036b0"]
 [ext_resource type="PackedScene" uid="uid://dqams5il2w21v" path="res://objects/player.tscn" id="5_036b0"]
 [ext_resource type="PackedScene" uid="uid://ccraft36g642a" path="res://objects/nesRobot.tscn" id="5_pkg7o"]
@@ -33,13 +34,13 @@ uv1_scale = Vector3(-1, 1, 1)
 height = 4.835449
 radius = 2.803711
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ic0uy"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_2o6r5"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_036b0"]
 resource_local_to_scene = true
 shader = ExtResource("2_tlwt5")
-shader_parameter/tex = SubResource("ViewportTexture_ic0uy")
+shader_parameter/tex = SubResource("ViewportTexture_2o6r5")
 shader_parameter/mask_type = 2
 shader_parameter/curve = 0.0
 shader_parameter/sharpness = 1.0
@@ -228,6 +229,9 @@ collision_mask = 16
 [node name="CollisionShape3D" type="CollisionShape3D" parent="monitor/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.12915051, 0)
 shape = SubResource("CylinderShape3D_gbfbk")
+
+[node name="monitorSFX" type="AudioStreamPlayer3D" parent="monitor"]
+stream = ExtResource("3_k3n1d")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 size = Vector2i(256, 256)

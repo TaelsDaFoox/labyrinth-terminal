@@ -42,19 +42,23 @@ func pacturn(dir: float):
 			movedir = dir
 			animNum = 2
 			position.x=round((position.x+8)/16)*16-8
+			Global.emitRobotInput()
 		if dir == PI/2 and not collD.get_overlapping_bodies():
 			movedir = dir
 			animNum = 0
 			position.x=round((position.x+8)/16)*16-8
+			Global.emitRobotInput()
 		if dir == 0 and not collR.get_overlapping_bodies():
 			movedir = dir
 			animNum = 1
 			position.y=round((position.y+8)/16)*16-8
+			Global.emitRobotInput()
 		if dir == PI and not collL.get_overlapping_bodies():
 			movedir = dir
 			animNum = 3
 			position.y=round((position.y+8)/16)*16-8
-
+			Global.emitRobotInput()
+			
 func againstWall():
 	if movedir == PI/-2 and collU.get_overlapping_bodies():
 		return true

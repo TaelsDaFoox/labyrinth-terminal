@@ -7,6 +7,7 @@ var monitorOn = true
 var gameEnergyDrainSpeed = 3.0
 var holdingBattery = false
 var inBatteryRange = false
+signal robotInput()
 func _process(delta: float) -> void:
 	if monitorOn:
 		power-=gameEnergyDrainSpeed*delta
@@ -19,3 +20,5 @@ func initializeVars():
 	power=100.0
 	monitorOn=true
 	holdingBattery=false
+func emitRobotInput():
+	robotInput.emit()

@@ -1,5 +1,8 @@
 extends Node3D
 @onready var model = $Cube
+@onready var sfx = $monitorSFX
+func _ready() -> void:
+	Global.robotInput.connect(beep)
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	Global.inControlRange=true
 	if Global.holdingBattery:
@@ -21,3 +24,7 @@ func _process(delta: float) -> void:
 		model.get_surface_override_material(1).emission_enabled=true
 	else:
 		model.get_surface_override_material(1).emission_enabled=false
+
+func beep():
+	sfx.pitch_scale=randf_range(0.9,1.1)
+	sfx.play()
