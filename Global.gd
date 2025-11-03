@@ -4,7 +4,7 @@ var inControlRange = false
 var controllingGame = false
 var power := 100.0
 var monitorOn = true
-var gameEnergyDrainSpeed = 2.0
+var gameEnergyDrainSpeed = 3.0
 var holdingBattery = false
 var inBatteryRange = false
 func _process(delta: float) -> void:
