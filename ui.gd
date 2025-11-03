@@ -12,6 +12,9 @@ func _process(delta: float) -> void:
 		if Global.monitorOn:
 			controlprompt.text = controlprompt.text+"\nPress Q to turn off"
 		else:
-			controlprompt.text = controlprompt.text+"\nPress Q to turn on"
+			if Global.power>0.0:
+				controlprompt.text = controlprompt.text+"\nPress Q to turn on"
+			else:
+				controlprompt.text = controlprompt.text+"\n[!]OUT OF POWER, CAN'T TURN ON[!]"
 	else:
 		controlprompt.text = ""

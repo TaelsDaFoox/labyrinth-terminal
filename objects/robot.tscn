@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://u0ctsg1uitgc" path="res://models/carl pacmin.glb" id="2_kvr6e"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_kvr6e"]
-radius = 1.9261332
+radius = 2.196511
 
 [node name="Robot" type="CharacterBody3D"]
 collision_mask = 5
