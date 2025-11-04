@@ -3,8 +3,10 @@ extends Control
 @onready var energylabel = $energyLabel
 var redcol = Color(1.0,0.0,0.0,1.0)
 var whitecol = Color(1.0,1.0,1.0,1.0)
+@onready var timerLabel = $timerLabel
 
 func _process(delta: float) -> void:
+	timerLabel.text = str(int(Global.timer/60))+":"+str(int(fmod(Global.timer,60))).pad_zeros(2)
 	energylabel.text = str(int(ceil(Global.power)))+"/100"
 	if Global.power<25.0:
 		energylabel.set("theme_override_colors/font_color",redcol)

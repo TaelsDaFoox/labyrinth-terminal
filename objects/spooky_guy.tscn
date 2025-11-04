@@ -13,7 +13,7 @@ script = ExtResource("1_817ku")
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 1.18189, 0)
 billboard = 1
-texture_filter = 0
+texture_filter = 2
 texture = ExtResource("1_7b5x3")
 hframes = 3
 vframes = 3
